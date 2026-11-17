@@ -1,0 +1,6 @@
+[
+  ["fuel_economy_lookup", {"year": 2026, "make": "Toyota", "model": "RAV4"}],
+  ["fuel_economy_compare", {"vehicles": [{"year": 2026, "make": "Toyota", "model": "RAV4"}, {"year": 2025, "make": "Tesla", "model": "Model Y"}]}],
+  ["fuel_cost_calculator", {"mpg": 28, "miles_per_year": 12000}],
+  ["fuel_economy_models", {"year": 2026, "make": "Honda"}]
+]

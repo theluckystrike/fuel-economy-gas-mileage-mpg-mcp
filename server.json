@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.theluckystrike/fuel-economy-gas-mileage-mpg-mcp",
+  "title": "Fuel Economy, Gas Mileage and MPG MCP",
+  "description": "EPA MPG, gas mileage, EV range and annual fuel cost for any car by year, make and model.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/theluckystrike/fuel-economy-gas-mileage-mpg-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp"
+    }
+  ]
+}

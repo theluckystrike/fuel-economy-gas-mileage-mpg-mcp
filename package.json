@@ -1,0 +1,57 @@
+{
+  "name": "fuel-economy-gas-mileage-mpg-mcp",
+  "version": "1.0.0",
+  "description": "Fuel economy and gas mileage MPG MCP server: EPA city, highway and combined MPG for any car, truck, hybrid or EV by year, make and model, EV range, annual fuel cost, real-world MPG, and car comparisons. Hosted, no key.",
+  "type": "module",
+  "license": "MIT",
+  "author": "theluckystrike",
+  "mcpName": "io.github.theluckystrike/fuel-economy-gas-mileage-mpg-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/fuel-economy-gas-mileage-mpg-mcp"
+  },
+  "homepage": "https://www.mcpstamp.com/servers/",
+  "bin": {
+    "fuel-economy-gas-mileage-mpg-mcp": "dist/stdio.js"
+  },
+  "main": "dist/stdio.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test",
+    "start": "node dist/stdio.js",
+    "deploy": "npx wrangler@4 deploy",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "fuel-economy",
+    "gas-mileage",
+    "mpg",
+    "epa",
+    "fueleconomy-gov",
+    "car-mpg",
+    "ev-range",
+    "hybrid",
+    "annual-fuel-cost",
+    "car-comparison",
+    "cloudflare-workers"
+  ]
+}
