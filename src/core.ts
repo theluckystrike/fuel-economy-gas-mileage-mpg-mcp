@@ -472,7 +472,7 @@ export async function fuelCost(f: FetchText, a: CostArgs, now = new Date()) {
     throw new InputError('give mpg, kwh_per_100_miles, or a vehicle (make, model, year or id)');
   }
   const what = res.vehicle ?? res.efficiency_used;
-  const priceTxt = Object.entries(res.price).map(([k, v]) => `${k.replace(/_per_/, ' per ').replace('electric', 'electricity')} ${usd2(v)}`).join(', ');
+  const priceTxt = Object.entries(res.price).map(([k, v]) => (k === 'electric_per_kwh' ? `electricity ${usd2(v)}/kWh` : `${k.replace(/_per_gallon$/, '')} ${usd2(v)}/gal`)).join(', ');
   let summary = `${what}: ${usd2(res.annual_cost)} a year (${usd2(res.monthly_cost)} a month, ${Math.round(res.cost_per_mile * 1000) / 10} cents a mile) for ${miles.toLocaleString('en-US')} miles at ${priceTxt}.`;
   if (res.plug_in_hybrid) summary += ` Plug-in hybrid: ${usd2(res.plug_in_hybrid.gas_only_annual)} on gas only, ${usd2(res.plug_in_hybrid.electric_only_annual)} on electricity only; the blend uses the EPA utility factor ${res.plug_in_hybrid.utility_factor} (share of miles on electricity).`;
   if (res.epa_annual_fuel_cost) summary += ` EPA estimate at 15,000 miles: ${usd(res.epa_annual_fuel_cost)} a year.`;

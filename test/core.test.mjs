@@ -99,6 +99,7 @@ test('compare RAV4, F-150 hybrid and Model Y at 15,000 miles and national prices
 
 test('fuel cost: from MPG, from a plug-in hybrid with the utility factor, from an id at 100% city, and from kWh/100 mi', async () => {
   const a = await fuelCost(f, { mpg: 30, miles_per_year: 12000 }, NOW);
+  assert.match(a.summary, /^30 MPG \(given\): \$1,600\.00 a year \(\$133\.33 a month, 13\.3 cents a mile\) for 12,000 miles at regular \$4\.00\/gal\./);
   assert.equal(a.annual_cost, 1600); assert.equal(a.monthly_cost, 133.33); assert.equal(a.gallons_per_year, 400); assert.deepEqual(a.price, { regular_per_gallon: 4 });
   assert.equal((await fuelCost(f, { mpg: 30, miles_per_year: 12000, fuel: 'premium' }, NOW)).annual_cost, 2004);
   assert.equal((await fuelCost(f, { mpg: 30, miles_per_year: 12000, price_per_gallon: 3.5 }, NOW)).annual_cost, 1400);
