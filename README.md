@@ -1,5 +1,49 @@
 # fuel-economy-gas-mileage-mpg-mcp
 
+**EPA city, highway and combined MPG, EV range and annual fuel cost for any car by year, make and model, from fueleconomy.gov, as an MCP server.** Free and hosted: no API key, no sign-up.
+
+Hosted MCP URL (Streamable HTTP):
+
+```
+https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp
+```
+
+## Quick start
+
+### Claude
+
+Claude Desktop or claude.ai: Settings > Connectors > Add custom connector, then paste the URL above.
+
+Claude Code:
+
+```
+claude mcp add --transport http fuel-economy-mpg https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp
+```
+
+Claude Desktop config file (`claude_desktop_config.json`), through the `mcp-remote` bridge:
+
+```json
+{
+  "mcpServers": {
+    "fuel-economy-mpg": { "command": "npx", "args": ["-y", "mcp-remote", "https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp"] }
+  }
+}
+```
+
+### Cursor
+
+Add to `~/.cursor/mcp.json`.
+
+```json
+{
+  "mcpServers": {
+    "fuel-economy-mpg": { "url": "https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp" }
+  }
+}
+```
+
+## About
+
 Fuel economy and gas mileage for AI assistants: the EPA city, highway and combined MPG of any car, truck, hybrid or EV by year, make and model, its EV range, what it costs to fuel a year, and side-by-side comparisons. Ask what MPG a 2026 RAV4 gets, whether a Model Y is cheaper to run than an F-150 hybrid, or what your 28 MPG car costs in gas a month.
 
 This is a Model Context Protocol (MCP) server. It reads the U.S. Department of Energy and EPA fueleconomy.gov web services at call time. It needs no API key.
@@ -21,7 +65,7 @@ Every result has structured JSON, a plain-text summary, `as_of`, `source` and `m
 - Current national average fuel and electricity prices from fueleconomy.gov, so fuel cost answers use today's prices rather than a training-time guess.
 - Model years up to next year as soon as the EPA lists them, plus the average MPG that real drivers report on fueleconomy.gov when there are reports.
 
-## Install
+## Other clients and local install
 
 ### Hosted (custom connector, ChatGPT developer mode, any remote MCP client)
 
@@ -29,18 +73,6 @@ Paste this URL. No token, no sign-up.
 
 ```
 https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp
-```
-
-### Cursor
-
-Add to `~/.cursor/mcp.json`.
-
-```json
-{
-  "mcpServers": {
-    "fuel-economy-mpg": { "url": "https://fuel-economy-gas-mileage-mpg-mcp.lipmichal.workers.dev/mcp" }
-  }
-}
 ```
 
 ### VS Code
